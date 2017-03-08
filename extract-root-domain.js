@@ -7,6 +7,11 @@ function extractRootDomain(url) {
 	fullDomain = (fullDomain.substring(0, 4) === "www.") ? fullDomain.substring(4) : fullDomain;
 	var topLevel = "";
 
+	// It's and IP address?
+	if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(fullDomain)) {
+		return fullDomain;
+	}
+
 	for (var i = 0; i < arrTopLevel.length; i++) {
 		if (fullDomain.substring(fullDomain.length - arrTopLevel[i].length) === arrTopLevel[i]) {
 			topLevel = arrTopLevel[i];
